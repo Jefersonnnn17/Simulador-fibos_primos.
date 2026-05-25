@@ -1,0 +1,283 @@
+/* --- PALETA DE COLORES OSCURA Y FOSFORECENTE --- */
+:root {
+    --bg-dark: #0d1117;          /* Fondo general de la página */
+    --card-dark: #161b22;        /* Fondo de las tarjetas */
+    --block-dark: #21262d;       /* Fondo de bloques internos */
+    --text-light: #c9d1d9;       /* Texto base */
+    
+    /* Colores Neón Fosforescentes */
+    --neon-fibo: #39ff14;        /* Verde neón eléctrico */
+    --neon-prime: #00f0ff;       /* Cian / Azul eléctrico brillante */
+    --neon-glow-fibo: rgba(57, 255, 20, 0.3);
+    --neon-glow-prime: rgba(0, 240, 255, 0.3);
+    
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- ENCABEZADO --- */
+.main-header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--card-dark);
+    border: 2px solid #30363d;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.main-header h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.autor {
+    font-size: 1.1rem;
+    color: #8b949e;
+}
+.autor strong {
+    color: var(--neon-prime);
+}
+
+/* --- CONTENEDORES PRINCIPALES --- */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--card-dark);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    border: 1px solid #30363d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Títulos con colores fosforescentes y efecto de brillo */
+.card:nth-of-type(1) h2 { 
+    color: var(--neon-fibo); 
+    text-shadow: 0 0 8px var(--neon-glow-fibo);
+}
+.card:nth-of-type(2) h2 { 
+    color: var(--neon-prime); 
+    text-shadow: 0 0 8px var(--neon-glow-prime);
+}
+
+.info-block {
+    background-color: var(--block-dark);
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #30363d;
+}
+
+.info-block h3 {
+    font-size: 1.05rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.info-block p {
+    font-size: 0.95rem;
+    color: #8b949e;
+}
+
+/* --- ESTILOS PARA LAS IMÁGENES AÑADIDAS --- */
+.image-container {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #0d1117;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px dashed #30363d;
+}
+
+.project-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 250px; /* Controla la altura máxima para que no rompa el diseño */
+    object-fit: cover;
+    border-radius: 4px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover interactivo para las imágenes */
+.card:nth-of-type(1) .project-img:hover {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 0 12px var(--neon-glow-fibo);
+}
+
+.card:nth-of-type(2) .project-img:hover {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 0 12px var(--neon-glow-prime);
+}
+
+/* --- FORMULARIOS --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #e6edf3;
+}
+
+input[type="number"] {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    padding: 12px;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#form-fibonacci input[type="number"]:focus { border-color: var(--neon-fibo); }
+#form-primos input[type="number"]:focus { border-color: var(--neon-prime); }
+
+/* Botones Fosforescentes */
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+#btn-calcular-fibo { 
+    background-color: transparent; 
+    color: var(--neon-fibo);
+    border: 2px solid var(--neon-fibo);
+}
+#btn-calcular-fibo:hover { 
+    background-color: var(--neon-fibo); 
+    color: #000000;
+    box-shadow: 0 0 15px var(--neon-glow-fibo);
+}
+
+#btn-evaluar-prime { 
+    background-color: transparent; 
+    color: var(--neon-prime);
+    border: 2px solid var(--neon-prime);
+}
+#btn-evaluar-prime:hover { 
+    background-color: var(--neon-prime); 
+    color: #000000;
+    box-shadow: 0 0 15px var(--neon-glow-prime);
+}
+
+/* --- CAJAS DE RESULTADO --- */
+.resultado-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--bg-dark);
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    min-height: 50px;
+    color: #e6edf3;
+}
+
+.resultado-box ul {
+    list-style-position: inside;
+    margin-top: 10px;
+}
+
+.resultado-box strong {
+    color: #ffffff;
+}
+
+.resumen {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #30363d;
+}
+
+/* Alertas de Resultados Especiales */
+.alerta {
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+.exitosa { background-color: rgba(39, 174, 96, 0.15); color: #58d68d; border: 1px solid #27ae60; }
+.insegura { background-color: rgba(231, 76, 60, 0.15); color: #f1948a; border: 1px solid #e74c3c; }
+.error { color: #f1948a; font-weight: bold; }
+
+/* --- PIE DE PÁGINA --- */
+.main-footer {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background-color: var(--card-dark);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: 1px solid #30363d;
+}
+
+.main-footer h3 { 
+    margin-bottom: 10px; 
+    color: #ffffff;
+}
+.main-footer hr { 
+    margin: 15px 0; 
+    border: 0;
+    border-top: 1px solid #30363d; 
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.links a {
+    color: var(--neon-prime);
+    text-decoration: none;
+    font-weight: bold;
+    transition: text-shadow 0.3s;
+}
+.links a:hover { 
+    text-shadow: 0 0 8px var(--neon-glow-prime);
+    text-decoration: underline; 
+}
+
+/* --- RESPONSIVIDAD --- */
+@media (min-width: 600px) {
+    button { width: auto; }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Web: Matemáticas en la Vida Real</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Matemáticas Aplicadas: Fibonacci y Números Primos</h1>
+        <p class="autor">Desarrollado por: <strong>Jeferson Espejo</strong></p>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>1. Simulador de Crecimiento Biológico (Fibonacci)</h2>
+            
+            <div class="info-block">
+                <h3>Contexto Real</h3>
+                <p>En la botánica, muchas plantas organizan sus hojas, ramas y pétalos siguiendo la secuencia de Fibonacci para maximizar la captura de luz solar y espacio. Este módulo simula cómo se expande una población celular o de ramificación vegetal por etapas cíclicas.</p>
+                
+                <div class="image-container">
+                    <img src="img/kttt.png" alt="Ilustración de Fibonacci en la naturaleza" class="project-img">
+                </div>
+                
+                <h3>Explicación del Algoritmo</h3>
+                <p>El programa funciona de manera secuencial sin utilizar vectores o arreglos complejos. Se inicializan dos variables básicas con los valores de cero y uno, que representan los dos primeros estados de la naturaleza. Luego, mediante un ciclo repetitivo que avanza mes a mes, el sistema calcula el siguiente valor de crecimiento sumando los dos resultados anteriores. Finalmente, las variables se actualizan para prepararse para la siguiente etapa, permitiendo mostrar la evolución del tamaño total de forma limpia paso a paso.</p>
+            </div>
+
+            <form id="form-fibonacci" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="input-meses">Cantidad de etapas o meses a evaluar:</label>
+                    <input type="number" id="input-meses" min="1" max="40" placeholder="Ej. 6" required>
+                </div>
+                <button type="button" id="btn-calcular-fibo">Simular Crecimiento</button>
+            </form>
+
+            <div class="resultado-box" id="resultado-fibo">
+                aquí se mostrará la secuencia de crecimiento...
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>2. Evaluador de Seguridad de Pines (Números Primos)</h2>
+            
+            <div class="info-block">
+                <h3>Contexto Real</h3>
+                <p>En la ciberseguridad y la criptografía moderna, los números primos son fundamentales. Debido a que solo tienen dos divisores, utilizarlos como bases de códigos o llaves dificulta los ataques informáticos de factorización por fuerza bruta.</p>
+                
+                <div class="image-container">
+                    <img src="img/lolo.png" alt="Ilustración de seguridad criptográfica y números primos" class="project-img">
+                </div>
+                
+                <h3>Explicación del Algoritmo</h3>
+                <p>Para comprobar si el código ingresado es seguro, el algoritmo realiza una verificación de divisibilidad. El programa toma el número entero provisto por el usuario y, mediante un bucle, calcula el residuo de dividir ese número por cada uno de los valores intermedios que van desde el uno hasta el número mismo. Un contador interno registra cuántas de estas divisiones resultan exactas (es decir, con residuo igual a cero). Si al finalizar el recorrido el contador es exactamente igual a dos, significa que el número solo es divisible entre uno y sí mismo, validándolo inmediatamente como un número primo seguro.</p>
+            </div>
+
+            <form id="form-primos" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="input-pin">Ingresa el código numérico / PIN a evaluar:</label>
+                    <input type="number" id="input-pin" min="1" placeholder="Ej. 97" required>
+                </div>
+                <button type="button" id="btn-evaluar-prime">Evaluador de Seguridad del PIN</button>
+            </form>
+
+            <div class="resultado-box" id="resultado-prime">
+                aquí se mostrará el estado de seguridad...
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <h3>Conclusión</h3>
+            <p>Tanto los patrones de Fibonacci presentes en la naturaleza como la propiedad de indivisibilidad de los números primos demuestran que las matemáticas no son solo abstractas: proveen las estructuras óptimas para la vida orgánica y los pilares lógicos para la seguridad digital contemporánea.</p>
+            <hr>
+            <div class="links">
+                <a href="https://github.com/tu-usuario/desafio-fibonacci-primos" target="_blank">📂 Git Jeferson Espejo</a>
+                <a href="https://tu-usuario.github.io/desafio-fibonacci-primos/" target="_blank">🌐 Página Publicada</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
