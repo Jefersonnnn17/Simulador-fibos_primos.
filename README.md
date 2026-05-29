@@ -10,8 +10,8 @@ La interfaz de usuario ha sido diseñada bajo un enfoque de Modo Oscuro (Dark Mo
 
 ## Enlaces del Proyecto
 
-* **Repositorio del Código Fuente:** [](https://github.com/Jefersonnnn17/Simulador-fibos_primos.)
-* **Despliegue de la Aplicación en la Web:** [](https://fibos-primos.netlify.app/).
+* **Repositorio del Código Fuente:** [https://github.com/Jefersonnnn17/Simulador-fibos_primos.](https://github.com/Jefersonnnn17/Simulador-fibos_primos.)
+* **Despliegue de la Aplicación en la Web:** [https://fibos-primos.netlify.app/](https://fibos-primos.netlify.app/).
 
 ---
 
