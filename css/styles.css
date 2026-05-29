@@ -1,4 +1,3 @@
-/* --- PALETA DE COLORES OSCURA Y FOSFORECENTE --- */
 :root {
     --bg-dark: #0d1117;          /* Fondo general de la página */
     --card-dark: #161b22;        /* Fondo de las tarjetas */
@@ -8,8 +7,11 @@
     /* Colores Neón Fosforescentes */
     --neon-fibo: #39ff14;        /* Verde neón eléctrico */
     --neon-prime: #00f0ff;       /* Cian / Azul eléctrico brillante */
+    --neon-comb: #ff00ff;        /* Magenta / Púrpura neón brillante */
+    
     --neon-glow-fibo: rgba(57, 255, 20, 0.3);
     --neon-glow-prime: rgba(0, 240, 255, 0.3);
+    --neon-glow-comb: rgba(255, 0, 255, 0.3);
     
     --border-radius: 8px;
 }
@@ -75,13 +77,22 @@ main {
 }
 
 /* Títulos con colores fosforescentes y efecto de brillo */
+.card:nth-of-type(1) { border-top: 4px solid var(--neon-fibo); }
 .card:nth-of-type(1) h2 { 
     color: var(--neon-fibo); 
     text-shadow: 0 0 8px var(--neon-glow-fibo);
 }
+
+.card:nth-of-type(2) { border-top: 4px solid var(--neon-prime); }
 .card:nth-of-type(2) h2 { 
     color: var(--neon-prime); 
     text-shadow: 0 0 8px var(--neon-glow-prime);
+}
+
+.card:nth-of-type(3) { border-top: 4px solid var(--neon-comb); }
+.card:nth-of-type(3) h2 { 
+    color: var(--neon-comb); 
+    text-shadow: 0 0 8px var(--neon-glow-comb);
 }
 
 .info-block {
@@ -119,14 +130,13 @@ main {
 .project-img {
     max-width: 100%;
     height: auto;
-    max-height: 250px; /* Controla la altura máxima para que no rompa el diseño */
+    max-height: 250px;
     object-fit: cover;
     border-radius: 4px;
     opacity: 0.85;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Efecto hover interactivo para las imágenes */
 .card:nth-of-type(1) .project-img:hover {
     opacity: 1;
     transform: scale(1.02);
@@ -137,6 +147,12 @@ main {
     opacity: 1;
     transform: scale(1.02);
     box-shadow: 0 0 12px var(--neon-glow-prime);
+}
+
+.card:nth-of-type(3) .project-img:hover {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 0 12px var(--neon-glow-comb);
 }
 
 /* --- FORMULARIOS --- */
@@ -167,6 +183,7 @@ input[type="number"] {
 
 #form-fibonacci input[type="number"]:focus { border-color: var(--neon-fibo); }
 #form-primos input[type="number"]:focus { border-color: var(--neon-prime); }
+#form-combinado input[type="number"]:focus { border-color: var(--neon-comb); }
 
 /* Botones Fosforescentes */
 button {
@@ -200,6 +217,17 @@ button {
     background-color: var(--neon-prime); 
     color: #000000;
     box-shadow: 0 0 15px var(--neon-glow-prime);
+}
+
+#btn-calcular-combinado { 
+    background-color: transparent; 
+    color: var(--neon-comb);
+    border: 2px solid var(--neon-comb);
+}
+#btn-calcular-combinado:hover { 
+    background-color: var(--neon-comb); 
+    color: #000000;
+    box-shadow: 0 0 15px var(--neon-glow-comb);
 }
 
 /* --- CAJAS DE RESULTADO --- */
