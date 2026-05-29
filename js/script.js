@@ -4,33 +4,29 @@ window.addEventListener("DOMContentLoaded", () => {
     // ASIGNACIÓN DE EVENTOS MEDIANTE GETELEMENTBYID
     document.getElementById("btn-calcular-fibo").addEventListener("click", calcularCrecimientoFibonacci);
     document.getElementById("btn-evaluar-prime").addEventListener("click", evaluarSeguridadPin);
+    document.getElementById("btn-calcular-combinado").addEventListener("click", generarIdentificadoresCombinados);
 
 });
 
 // --- FUNCIÓN 1: SIMULADOR DE FIBONACCI ---
 function calcularCrecimientoFibonacci() {
-    // Captura del valor usando getElementById
     const mesesInput = document.getElementById("input-meses").value;
     const cajaResultado = document.getElementById("resultado-fibo");
     
     let meses = parseInt(mesesInput);
 
-    // Validación básica de entrada
     if (isNaN(meses) || meses <= 0) {
         cajaResultado.innerHTML = "<span class='error'>Por favor, ingrese un número válido de meses.</span>";
         return;
     }
 
-    // Variables simples para Fibonacci sin usar vectores (Arrays)
     let a = 0;
     let b = 1;
     let c;
     
     let HTMLResultados = `<h4>Progresión de ramificación por etapas:</h4><ul>`;
 
-    // Ciclo para generar las etapas solicitadas
     for (let i = 1; i <= meses; i++) {
-        // En la primera etapa se muestra el primer valor inicial de la naturaleza (1)
         if (i === 1) {
             HTMLResultados += `<li><strong>Etapa ${i}:</strong> 1 unidad de crecimiento.</li>`;
             continue;
@@ -44,36 +40,30 @@ function calcularCrecimientoFibonacci() {
     }
 
     HTMLResultados += `</ul><p class='resumen'><strong>Total acumulado en la última etapa:</strong> ${b} unidades.</p>`;
-    
-    // Mostrar resultados directamente en la página
     cajaResultado.innerHTML = HTMLResultados;
 }
 
 
 // --- FUNCIÓN 2: EVALUADOR DE NÚMEROS PRIMOS ---
 function evaluarSeguridadPin() {
-    // Captura del valor usando getElementById
     const pinInput = document.getElementById("input-pin").value;
     const cajaResultado = document.getElementById("resultado-prime");
 
     let numero = parseInt(pinInput);
 
-    // Validación básica de entrada
     if (isNaN(numero) || numero <= 0) {
         cajaResultado.innerHTML = "<span class='error'>Por favor, ingrese un código numérico mayor a 0.</span>";
         return;
     }
 
-    // Algoritmo de verificación de número primo mediante contador de residuos
     let contador = 0;
 
     for (let i = 1; i <= numero; i++) {
         if (numero % i === 0) {
-            contador++; // Incrementa si el residuo es cero
+            contador++;
         }
     }
 
-    // Renderizado condicional en base a la cantidad de divisores
     if (contador === 2) {
         cajaResultado.innerHTML = `
             <div class='alerta exitosa'>
@@ -87,7 +77,7 @@ function evaluarSeguridadPin() {
     }
 }
 
-// Función auxiliar opcional para darle un plus de calidad técnica a tu respuesta
+// Función auxiliar para buscar primos cercanos
 function encontrarPrimoCercano(num) {
     let candidato = num + 1;
     while (true) {
@@ -98,4 +88,60 @@ function encontrarPrimoCercano(num) {
         if (cont === 2) return candidato;
         candidato++;
     }
+}
+
+
+// --- FUNCIÓN 3: ENFOQUE COMBINADO (FIBONACCI + PRIMOS) ---
+function generarIdentificadoresCombinados() {
+    const limiteInput = document.getElementById("input-limite").value;
+    const cajaResultado = document.getElementById("resultado-combinado");
+    
+    let limite = parseInt(limiteInput);
+
+    if (isNaN(limite) || limite <= 0) {
+        cajaResultado.innerHTML = "<span class='error'>Por favor, ingrese un número válido de términos a evaluar.</span>";
+        return;
+    }
+
+    let a = 0;
+    let b = 1;
+    let c;
+    
+    let HTMLResultados = `<h4>Identificadores únicos generados (Primos de Fibonacci):</h4><ul>`;
+    let encontrados = 0;
+
+    for (let i = 1; i <= limite; i++) {
+        let numeroEvaluar;
+
+        if (i === 1) {
+            numeroEvaluar = 1;
+        } else {
+            c = a + b;
+            a = b;
+            b = c;
+            numeroEvaluar = b;
+        }
+
+        // Sub-rutina interna: Verificar si el término actual es Primo
+        let divisores = 0;
+        for (let j = 1; j <= numeroEvaluar; j++) {
+            if (numeroEvaluar % j === 0) {
+                divisores++;
+            }
+        }
+
+        // Validación de primalidad (exactamente dos divisores)
+        if (divisores === 2) {
+            encontrados++;
+            HTMLResultados += `<li><strong>Token #${encontrados}:</strong> Código de seguridad basado en el valor matemático [ ${numeroEvaluar} ]</li>`;
+        }
+    }
+
+    if (encontrados === 0) {
+        HTMLResultados += `<li>No se encontraron números primos dentro del rango analizado de la serie de Fibonacci.</li>`;
+    }
+
+    HTMLResultados += `</ul><p class='resumen'><strong>Análisis finalizado:</strong> Se han aislado ${encontrados} identificadores cripto-naturales de un total de ${limite} términos evaluados de la sucesión.</p>`;
+    
+    cajaResultado.innerHTML = HTMLResultados;
 }
